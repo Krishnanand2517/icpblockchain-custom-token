@@ -28,8 +28,8 @@ actor Token {
 
     if (balances.get(msg.caller) == null) {
       let amount = 10000;
-      balances.put(msg.caller, amount);
-      return "Success";
+      let result = await transfer(msg.caller, amount); // from canister to the client
+      return result;
     } else {
       return "Already Claimed";
     };
