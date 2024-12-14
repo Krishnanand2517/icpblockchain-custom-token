@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AuthClient } from "@dfinity/auth-client";
 
-import {token_backend, createActor, canisterId} from "../../../declarations/token_backend";
+import { createActor, canisterId } from "../../../declarations/token_backend";
 
-function Faucet() {
+function Faucet(props) {
   const [isDisabled, setIsDisabled] = useState(false)
   const [buttonText, setButtonText] = useState("Gimme gimme")
 
@@ -31,7 +31,7 @@ function Faucet() {
         </span>
         Faucet
       </h2>
-      <label>Get your free DKrish tokens here! Claim 10,000 KRIS coins to your account.</label>
+      <label>Get your free DKrish tokens here! Claim 10,000 KRIS coins to {props.userPrincipal}.</label>
       <p className="trade-buttons">
         <button id="btn-payout" onClick={handleClick} disabled={isDisabled}>
           {buttonText}
